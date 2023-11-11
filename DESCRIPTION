@@ -1,6 +1,6 @@
 Package: mrtree
 Title: Multi-resolution Reconciled Tree
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Minshi",
            family = "Peng",
@@ -34,8 +34,7 @@ Imports:
     Seurat,
     SingleCellExperiment,
     uwot,
-    grDevices,
-    SymSim
+    grDevices
 Depends:
     R (>= 3.6.0)
 biocViews:
