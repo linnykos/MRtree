@@ -27,7 +27,6 @@ Imports:
     tidytree,
     ggplot2,
     ggtree,
-    ggimage,
     clustree,
     reshape2,
     yaml,

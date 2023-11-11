@@ -9,7 +9,6 @@
 #' @param label.order a vector specifying the order of labels for default colors
 #' @param node.size scalar, the size of the pie chart / node
 #' @param cols a vector of colors, one per each label. If not provided, use the default colors.
-#' @param plot.piechart boolean, whether to draw the pie chart for each tree node.
 #' @param tip.labels a vector of strings specifying the labels of tree leafs. The labels should align with the order of leaf in the plot.
 #' @param tip.label.dist vertical distance of the tip labels to the tree tips
 #' @param show.branch.labels boolean, whether to show the branch labels for convenience of flipping branches
@@ -23,14 +22,13 @@
 #' @importFrom tibble as_tibble
 #' @importFrom tidytree full_join as.treedata
 #' @importFrom ggtree ggtree nodepie layout_dendrogram
-#' @import ggimage
 #' @export
 #' @examples
 #' data("clust_example")
 #' out = mrtree(clust_example$clusterings)
-#' plot_tree(labelmat = out$labelmat.mrtree, ref.labels = clust_example$ref.labels, plot.piechart = TRUE)
+#' plot_tree(labelmat = out$labelmat.mrtree, ref.labels = clust_example$ref.labels)
 plot_tree <- function (labelmat, ref.labels = NULL, show.ref.labels = TRUE,
-                       label.order = NULL, node.size = 0.2, cols = NULL, plot.piechart = TRUE,
+                       label.order = NULL, node.size = 0.2, cols = NULL,
                        tip.labels = NULL, tip.label.dist = 4,
                        show.branch.labels = FALSE, branch.label.dist = 10,
                        flip.branch = NULL, legend.title = "", bottom.margin = 25)
@@ -66,9 +64,6 @@ plot_tree <- function (labelmat, ref.labels = NULL, show.ref.labels = TRUE,
         if (!all(label.order %in% ref.labels)) {
             warnings(sum(!label.order %in% ref.labels), "label name not if the reference labels!")
         }
-    }
-    if (plot.piechart) {
-        pointsize = 0.01
     }
     else {
         pointsize = 5
@@ -161,15 +156,6 @@ plot_tree <- function (labelmat, ref.labels = NULL, show.ref.labels = TRUE,
             }
             gg = gg + guides(colour = guide_legend(override.aes = list(size = 5)),
                              size = FALSE) + labs(color = legend.title)
-        }
-        if (plot.piechart) {
-            requireNamespace("ggimage")
-            pies = ggtree::nodepie(pct, cols = 1:(ncol(pct) -
-                                                      1), color = cols[order(label.order)])
-            pies = pies[c(issplit, isleaf)]
-            piesize = nodesize$nodesize
-            gg = gg + ggtree::geom_inset(pies, reverse_x = TRUE,
-                                         height = piesize, width = piesize)
         }
     })
     gg
