@@ -4,6 +4,10 @@ R package for MRtree.
 
 MRtree for Multi-resolution Reconciled tree, is a post clustering procedure to build cluster hierarchy based on flat clustering obtained for multi-resolutions. The tool is developed for single-cell RNAseq clustering analysis to identify sub-cell types. It can couple with many popular clustering tools such as Seurat. 
 
+## Kevin Notes:
+
+I threw out all instances of `SymSim` (which was needed for all the functions to simulate data) and `ggimage` (due to some collate error, which was needed for `plot.piechart` option in `plot_tree`)
+
 
 ## Citation
 
@@ -31,7 +35,7 @@ First, make sure to install all the dependent packages indicated in the `DESCRIP
 `mrtree` package can then be installed through `devtools` in R with the following commands,
 ```{r}
 library("devtools")
-devtools::install_github("pengminshi/mrtree")
+devtools::install_github("linnykos/mrtree")
 ```
 
 `mrtree` provides wrappers for multiple clustering functions (see [vignette 1](https://htmlpreview.github.io/?https://github.com/pengminshi/MRtree/blob/master/vignettes/MRtree-tutorial.html)). The required packages for respective clustering methods are only required if the method is needed. This avoids the overloading dependencies.
