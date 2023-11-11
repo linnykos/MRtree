@@ -29,15 +29,11 @@ Imports:
     ggtree,
     clustree,
     reshape2,
-    yaml,
     Seurat,
     SingleCellExperiment,
     uwot,
     grDevices
 Depends:
     R (>= 3.6.0)
-biocViews:
-Remotes:
-    YosefLab/SymSim
 RoxygenNote: 7.1.1
 Config/testthat/edition: 3
