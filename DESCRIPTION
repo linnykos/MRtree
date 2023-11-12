@@ -1,6 +1,6 @@
 Package: mrtree
 Title: Multi-resolution Reconciled Tree
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: 
     person(given = "Minshi",
            family = "Peng",
@@ -27,7 +27,9 @@ Imports:
     Seurat,
     SingleCellExperiment,
     uwot,
-    grDevices
+    grDevices,
+    clustree,
+    ggraph (>= 2.1.0)
 Depends:
     R (>= 3.6.0)
 RoxygenNote: 7.1.1

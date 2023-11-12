@@ -7,7 +7,7 @@ MRtree for Multi-resolution Reconciled tree, is a post clustering procedure to b
 ## Kevin Notes:
 
 I threw out all instances of `SymSim` (which was needed for all the functions to simulate data) and `ggimage` (due to some collate error, which was needed for `plot.piechart` option in `plot_tree`).
-I also threw out all the plotting functions all together since they were somehow requiring some bizarre dependency on `aplot` (among other things).
+I also threw out many the plotting functions (importantly, `plot_tree`) all together since they were somehow requiring some bizarre dependency on `aplot` (among other things).
 
 ## Citation
 
