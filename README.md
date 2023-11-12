@@ -42,3 +42,10 @@ devtools::install_github("linnykos/mrtree")
 
 ## Examples
 Please follow the [vignette 1](https://htmlpreview.github.io/?https://github.com/pengminshi/MRtree/blob/master/vignettes/MRtree-tutorial.html) for an example of using this R package with Seurat and SC3 on a simulated dataset, and [vignette 2](https://htmlpreview.github.io/?https://github.com/pengminshi/MRtree/blob/master/vignettes/zeisel_example.html) for the analysis on a mouse brain data.
+
+## Kevin demo
+
+```{r}
+library("devtools")install.packages("rlang") # need version >= 1.1.0install.packages("vctrs") # need version >= 0.5.0install.packages("dplyr") # need version >= 1.0.10install.packages("purrr") # need version >= 1.0.1install.packages("ggraph") # need version >= 2.1.0devtools::session_info() #devtools::install_github("linnykos/mrtree")# 3: None# Do you want to install from sources the packages which need compilation? (Yes/no/cancel): no# Package which is only available in source form, and may need compilation of C/C++/Fortran: ‘spatstat.explore’: nolibrary(mrtree)data("clust_example")out <- mrtree(clust_example$clusterings)out$labelmat.mrtree# data frame with given prefix and suffix as inputdf <- as.data.frame(clust_example$clusterings); colnames(df) = paste0('K_', 1:4)df$other <- 1:nrow(clust_example$clusterings)  # add an additional columnout <- mrtree(df, prefix = 'K_', suffix=NULL)cl <- cbind(clust_example$clusterings, clust_example$clusterings)# add some additional noisefor (i in 1:ncol(cl)){    cl[sample(10),i] = sample(1:length(unique(cl[,i])), 10, replace = TRUE)}mrtree(cl, consensus=TRUE) # mrtree with within-resolution consensus clustering
+
+plot_clustree(labelmat = clust_example$clusterings, ref.labels = clust_example$ref.labels)```
